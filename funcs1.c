@@ -10,7 +10,6 @@ char *tokenize_line(char *line, stack_t **stack,
 		unsigned int line_num)
 {
 	char *token, *args;
-	int i = 0;
 	bool int_flag;
 	(void) stack;
 

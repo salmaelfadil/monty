@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 {
 	char *line = NULL;
 	stack_t *stack = NULL;
-	size_t buffer_size = 0;
+	size_t *buffer_size = 0;
 	int line_num = 1;
 	instruct_func func;
 
