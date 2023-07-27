@@ -18,7 +18,7 @@ exit(EXIT_FAILURE);
 new->n = data.check_op;
 new->prev = NULL;
 new->next = *stack;
-if (!(*stack))
+if (*stack)
 {
 (*stack)->prev = new;
 }
