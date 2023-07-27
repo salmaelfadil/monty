@@ -1,88 +1,69 @@
 #include "monty.h"
 /**
- * push - pushes a value to a stack_t linked list.
- * @top: double pointer to the top mode node of a stack_t linked list.
- * @line_number: The current working line number of a Monty bytecodes file.
+ * push - push a new int to the stack
+ * @stack: stack
+ * @line_num: line number
+ * Return: nothing
  */
-void push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void push(stack_t **stack, __attribute__ ((unused))unsigned int line_num)
 {
 	stack_t *new;
 
 	new = malloc(sizeof(stack_t));
-
 	if (!new)
 	{
-		fprintf(stderr, "Memory allocation error\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	new->n = data.check_op;
-	new->prev = NULL;
 	new->next = *stack;
-	if (*stack)
-	{
+	new->prev = NULL;
+	if (*stack != NULL)
 		(*stack)->prev = new;
-	}
 	*stack = new;
 }
-
 /**
- * pall - function that prints all elements
- * @stack: double pointer  to linked list stack
- * @line_number: number of line
- * Return: nothin
- */
-void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
-{
-	stack_t *tmp = *stack;
-
-	while (tmp)
-	{
-		printf("%d\n", tmp->n);
-		tmp = tmp->next;
-	}
-}
-/**
- * pint - print int a top of stack
- * @stack: pointer to linked list stack
- * @line_number: number of line
- * Retutn: noting
+ * pint - print the top element
+ * @stack: double pointer
+ * @line_num: line number
+ * Return: nothing
  *
  */
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_num)
 {
-	stack_t *tmp = *stack;
+	stack_t *tmp;
 
-	if (!tmp)
+	tmp = *stack;
+	if (tmp == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", tmp->n);
 }
 /**
- * pop - delete an element from list
- *@stack: double pointer
- *@line_number: number of line
+ * pop - remove element
+ *@stack: double opinter
+ *@line_num: number of line
  *Return: nothing
  */
-void pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_num)
 {
 	stack_t *tmp = *stack;
 
-	if (!stack || *stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 	*stack = tmp->next;
-	if (*stack)
+	if (*stack != NULL)
 		(*stack)->prev = NULL;
 	free(tmp);
 }
-
 /**
- * free_stack - free stack
- * @head: pointer to head of stack
+ * free_stack - free a list
+ * @head: pointer to head
  * Return: nothing
  */
 void free_stack(stack_t *head)
