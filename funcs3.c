@@ -6,23 +6,23 @@
  */
 void push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
-stack_t *new;
+	stack_t *new;
 
-new = malloc(sizeof(stack_t));
+	new = malloc(sizeof(stack_t));
 
-if (!new)
-{
-fprintf(stderr, "Memory allocation error\n");
-exit(EXIT_FAILURE);
-}
-new->n = data.check_op;
-new->prev = NULL;
-new->next = *stack;
-if (*stack)
-{
-(*stack)->prev = new;
-}
-*stack = new;
+	if (!new)
+	{
+		fprintf(stderr, "Memory allocation error\n");
+		exit(EXIT_FAILURE);
+	}
+	new->n = data.check_op;
+	new->prev = NULL;
+	new->next = *stack;
+	if (*stack)
+	{
+		(*stack)->prev = new;
+	}
+	*stack = new;
 }
 
 /**
@@ -33,13 +33,13 @@ if (*stack)
  */
 void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
-stack_t *tmp = *stack;
+	stack_t *tmp = *stack;
 
-while (tmp)
-{
-printf("%d\n", tmp->n);
-tmp = tmp->next;
-}
+	while (tmp)
+	{
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
+	}
 }
 /**
  * pint - print int a top of stack
@@ -50,14 +50,14 @@ tmp = tmp->next;
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-stack_t *tmp = *stack;
+	stack_t *tmp = *stack;
 
-if (!tmp)
-{
-fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-exit(EXIT_FAILURE);
-}
-printf("%d\n", tmp->n);
+	if (!tmp)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", tmp->n);
 }
 /**
  * pop - delete an element from list
@@ -67,16 +67,16 @@ printf("%d\n", tmp->n);
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-stack_t *tmp = *stack;
-if (!stack || *stack == NULL)
-{
-fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-exit(EXIT_FAILURE);
-}
-*stack = tmp->next;
-if (*stack != NULL)
-(*stack)->prev = NULL;
-free(tmp);
+	stack_t *tmp = *stack;
+	if (!stack || *stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = tmp->next;
+	if (*stack)
+		(*stack)->prev = NULL;
+	free(tmp);
 }
 
 /**
@@ -86,11 +86,12 @@ free(tmp);
  */
 void free_stack(stack_t *head)
 {
-stack_t *tmp;
-while (head != NULL)
-{
-tmp = head->next;
-free(head);
-head = tmp;
-}
+	stack_t *tmp;
+
+	while (head)
+	{
+		tmp = head->next;
+		free(head);
+		head = tmp;
+	}
 }
