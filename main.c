@@ -1,4 +1,5 @@
 #include "monty.h"
+data_var_t data;
 /**
  * main - main entry point
  * @argv: arguments vector
@@ -24,7 +25,7 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
 	}
-	while (_getline(&data.buffer, buffer_size, data.file) != -1)
+	while (getline(&data.buffer, buffer_size, data.file) != -1)
 	{
 		line = tokenize_line(data.buffer, &stack, line_num);
 		if (line == NULL || line[0] == '#')
