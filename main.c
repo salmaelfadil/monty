@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 	}
 	while (getline(&data.buffer, &buffer_size, data.file) != -1)
 	{
-		line = tokenize_line(data.buffer, &stack, line_num);
+		line = tokenize_line(data.buffer, stack, line_num);
 		if (line == NULL || line[0] == '#')
 		{
 			line_num++;
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, line);
 			exit(EXIT_FAILURE);
 		}
-		func(&stack, line_num);
+		func(stack, line_num);
 		line_num++;
 	}
 	free(data.buffer);
