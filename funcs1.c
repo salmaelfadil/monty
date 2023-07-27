@@ -11,7 +11,7 @@ char *tokenize_line(char *line, stack_t **stack,
 {
 	char *token, *args;
 	int i = 0;
-	bool int_flag = false;
+	bool int_flag;
 
 	token = strtok(line, "\n ");
 
@@ -20,20 +20,7 @@ char *tokenize_line(char *line, stack_t **stack,
 	if (strcmp(token, "push") == 0)
 	{
 		args = strtok(NULL, "\n");
-		while (args[i])
-		{
-			if (args[0] == '-')
-			{
-				i++;
-				continue;
-			}
-			if (!isdigit(args[i]))
-			{
-				int_flag = false;
-			}
-			i++;
-			int_flag = true;
-		}
+		int_flag = num_check(args);
 		if (int_flag == true && args != NULL)
 			data.check_op = atoi(args);
 		else
@@ -43,6 +30,26 @@ char *tokenize_line(char *line, stack_t **stack,
 		}
 	}
 	return (token);
+}
+/**
+ * num_check - checks if string is a number
+ * @str: string
+ * Return: True if number
+ */
+bool num_check(char *str)
+{
+	int i = 0;
+
+	if (!str)
+		return (false);
+	for(; str[i]; i++)
+	{
+		if (str[0] == '-')
+			i++;
+		if (!isdigit(str[i]))
+			return (false);
+	}
+	return (true);
 }
 /**
  * get_func -- maps the correct function

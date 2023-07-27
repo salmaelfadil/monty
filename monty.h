@@ -58,6 +58,7 @@ extern data_var_t data;
 
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func get_func(char *str);
+bool num_check(char *str);
 
 char *tokenize_line(char *line, stack_t **stack, unsigned int line_num);
 
