@@ -61,7 +61,7 @@ instruct_func get_func(char *str);
 bool num_check(char *str);
 
 char *tokenize_line(char *line, stack_t **stack, unsigned int line_num);
-
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void push(stack_t **stack, __attribute__ ((unused))unsigned int line_number);
 void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
