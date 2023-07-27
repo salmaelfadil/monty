@@ -42,7 +42,7 @@ bool num_check(char *str)
 
 	if (!str)
 		return (false);
-	for(; str[i]; i++)
+	for (; str[i]; i++)
 	{
 		if (str[0] == '-')
 			i++;
