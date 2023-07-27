@@ -56,7 +56,8 @@ char *tokenize(char *line, stack_t **stack, unsigned int line_num);
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_num);
 instruct_func get_func(char *str);
 bool num_check(char *str);
-ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
+void copy_toline(char **line, size_t *n, char *buf, size_t size_buf);
 
 void pall(stack_t **stack, unsigned int line_num);
 void push(stack_t **stack, unsigned int line_num);
