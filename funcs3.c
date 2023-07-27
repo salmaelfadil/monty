@@ -4,7 +4,7 @@
  * @top: double pointer to the top mode node of a stack_t linked list.
  * @line_number: The current working line number of a Monty bytecodes file.
  */
-void push(stack_t **top, __attribute__ ((unused))unsigned int line_number)
+void push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
 stack_t *new;
 
@@ -17,12 +17,12 @@ exit(EXIT_FAILURE);
 }
 new->n = data.check_op;
 new->prev = NULL;
-new->next = *top;
-if (!top)
+new->next = *stack;
+if (!(*stack))
 {
-(*top)->prev = top;
+(*stack)->prev = new;
 }
-*top = new;
+*stack = new;
 }
 
 /**

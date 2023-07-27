@@ -60,7 +60,9 @@ extern data_var_t data;
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func get_func(char *str);
 
-void push(stack_t **top, __attribute__ ((unused))unsigned int line_number);
+char *tokenize_line(char *line, __attribute__ ((unused)) stack_t **stack, unsigned int line_num);
+
+void push(stack_t **stack, __attribute__ ((unused))unsigned int line_number);
 void pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);

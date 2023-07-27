@@ -6,7 +6,7 @@
  * @line_num: line number
  * Return: returns tokenized line
 */
-char *tokenize_line(char *line, __attribute__ ((unused)) stack_t **stack,
+char *tokenize_line(char *line, stack_t **stack,
 		unsigned int line_num)
 {
 	char *token, *args;
