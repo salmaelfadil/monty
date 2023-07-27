@@ -12,6 +12,7 @@ char *tokenize_line(char *line, stack_t **stack,
 	char *token, *args;
 	int i = 0;
 	bool int_flag;
+	(void) stack;
 
 	token = strtok(line, "\n ");
 
