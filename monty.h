@@ -10,7 +10,6 @@
 #include <ctype.h>
 #include <stdbool.h>
 
-extern int check_op;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
